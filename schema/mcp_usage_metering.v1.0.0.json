@@ -1,0 +1,93 @@
+{
+ "input_schema": {
+  "additionalProperties": false,
+  "properties": {
+   "caller_id": {
+    "default": "demo_caller",
+    "title": "Caller Id",
+    "type": "string"
+   },
+   "end_customer_ref": {
+    "maxLength": 128,
+    "minLength": 1,
+    "title": "End Customer Ref",
+    "type": "string"
+   },
+   "idempotency_key": {
+    "maxLength": 128,
+    "minLength": 8,
+    "pattern": "^[A-Za-z0-9._:-]+$",
+    "title": "Idempotency Key",
+    "type": "string"
+   },
+   "metadata": {
+    "additionalProperties": {
+     "type": "string"
+    },
+    "maxProperties": 20,
+    "title": "Metadata",
+    "type": "object"
+   },
+   "source": {
+    "anyOf": [
+     {
+      "type": "string"
+     },
+     {
+      "type": "null"
+     }
+    ],
+    "default": null,
+    "title": "Source"
+   },
+   "tool_name": {
+    "maxLength": 128,
+    "minLength": 1,
+    "pattern": "^[A-Za-z0-9._/-]+$",
+    "title": "Tool Name",
+    "type": "string"
+   },
+   "tool_version": {
+    "pattern": "^\\d+\\.\\d+\\.\\d+$",
+    "title": "Tool Version",
+    "type": "string"
+   },
+   "unit_label": {
+    "default": "call",
+    "maxLength": 32,
+    "minLength": 1,
+    "title": "Unit Label",
+    "type": "string"
+   },
+   "unit_price_cents": {
+    "default": 0,
+    "maximum": 100000,
+    "minimum": 0,
+    "title": "Unit Price Cents",
+    "type": "integer"
+   },
+   "units": {
+    "default": 1,
+    "maximum": 1000000,
+    "minimum": 1,
+    "title": "Units",
+    "type": "integer"
+   }
+  },
+  "required": [
+   "tool_name",
+   "tool_version",
+   "end_customer_ref",
+   "idempotency_key"
+  ],
+  "title": "MeteringInput",
+  "type": "object"
+ },
+ "output_fields": [
+  "catalog_fee_cents",
+  "invoice_preview",
+  "metered_event",
+  "reference_id"
+ ],
+ "version": "1.0.0"
+}
