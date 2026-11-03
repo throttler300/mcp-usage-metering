@@ -6,16 +6,17 @@ Hosted tool that records one billable usage event per MCP tool call, idempotentl
 - Tool list: `GET /mcp/tools` · Health: `GET /health`
 - Contract: `schema/mcp_usage_metering.v1.0.0.json` (strict input, required `idempotency_key`, versioned 1.0.0)
 
-## Pricing
-- **$0.15 per 1,000 events** ($0.00015/event)
-- **10,000 free events per month**
-- Past the free allowance the call returns **HTTP 402 `PAYMENT_REQUIRED`** with a buy link. Your agent asks you once, you click buy, the tool keeps working. Replays with the same `idempotency_key` are never billed twice.
+## Pricing and buying (no signup, no key)
+- Call the tool directly. Each IP gets **100 free keyless calls per day**.
+- After that, `tools/call` returns `isError: true` with `error_code: PAYMENT_REQUIRED`. `structuredContent.payment` holds a one-click `approve_and_pay_url` for your human and a `grant_token`. Your agent asks you once, you click buy, then the agent retries the same call with header `X-Grant-Token` (or uses the `/u/<grant_token>/mcp` URL form). Same token forever.
+- Usage after purchase: **$0.15 per 1,000 events** ($0.00015/event), **10,000 free events per month** per account.
+- Replays with the same `idempotency_key` are never billed twice.
 
 ## Inputs
 Required: `tool_name`, `tool_version` (semver), `end_customer_ref`, `idempotency_key` (8–128 chars). Optional: `units`, `unit_label`, `unit_price_cents`, `metadata`.
 
 ## Legal
-Terms of Service and Privacy Policy are **drafts pending review** — see `legal/`.
+Terms of Service and Privacy Policy are **DRAFT, pending counsel review, not yet in effect** — see `legal/`.
 
 ## License
 MIT (this repository: docs and schema). Operated by Dirtsmith LLC.
