@@ -20,3 +20,9 @@ Terms of Service and Privacy Policy are **DRAFT, pending counsel review, not yet
 
 ## License
 MIT (this repository: docs and schema). Operated by Dirtsmith LLC.
+
+## More tools on the same endpoint (added 2026-11-03)
+The same MCP URL (`https://gap-functions.bfurrow26.workers.dev/mcp`) also serves:
+- **agent_spend_ledger**: hosted shared budget ledger. Actions: `set_budget`, `reserve`, `settle`, `release`, `status`. Reserve is atomic: concurrent agents on one budget can never exceed the ceiling. Reservations expire after `ttl_s` (default 900 s). Amounts are integer micro-USD. $9.00 per 1,000 calls after 1,000 free calls a month.
+- **agent_lease_lock**: hosted lease lock. Actions: `acquire`, `renew`, `release`, `status`, with `ttl_s` and a monotonic `fencing_token`. $0.90 per 1,000 calls after 1,000 free calls a month.
+State is shared by `namespace` (16-128 chars). Any agent that knows the namespace can read and change that state, so treat it like a password. We store only its hash. Buying works the same way as metering: no signup or key, one approve-and-pay link when the free calls run out.
