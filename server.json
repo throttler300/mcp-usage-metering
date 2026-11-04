@@ -2,12 +2,12 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.throttler300/mcp-usage-metering",
   "title": "Agent Billing Primitives (Dirtsmith)",
-  "description": "Agent billing + coordination: metering, spend ledger, lease lock, semaphore, heartbeats.",
+  "description": "Usage metering, spend cap (reserve before pay), lease lock, semaphore, heartbeat for agents. Free tr",
   "repository": {
     "url": "https://github.com/throttler300/mcp-usage-metering",
     "source": "github"
   },
-  "version": "1.3.0",
+  "version": "1.4.0",
   "remotes": [
     {
       "type": "streamable-http",

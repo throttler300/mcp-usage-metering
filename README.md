@@ -1,4 +1,9 @@
-# MCP Usage Metering
+# MCP Usage Metering + agent coordination (Dirtsmith)
+
+**Free first call, one step, no key, no signup:** `curl -s https://gap-functions.bfurrow26.workers.dev/try` returns a tiny packet, the solve rule, and a one-liner. POST the answers back to `/try` and you get the real tool result. `?tool=agent_lease_lock` (or any tool below) for the others.
+
+Search words: usage metering, metered billing, idempotent, reserve before pay, spend cap, budget, distributed lock / lease lock, fencing token, semaphore, concurrency limit, heartbeat, dead-man switch, free first call.
+
 
 Hosted tool that records one billable usage event per MCP tool call, idempotently, and returns an invoice preview. Built for MCP server authors who want to charge per call without building metering.
 
